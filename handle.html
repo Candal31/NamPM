@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+    <title>NamanganPM</title>
+    <script src="jquery-3.4.1.js"></script>
+    <style>
+        body{
+            margin-left: 50px;
+            margin-right: 50px;
+            padding-left: 40px;
+            padding-top: 30px;
+            padding-bottom: 60px;
+            padding-right: 60px;
+        }
+        h1{
+            font-size: 70px;
+            margin-top: 0;
+            padding-top: 0;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+        li{
+            font-size: 25pt;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>So'rov yuborilgan o'quvchilar:</h1>
+    <div class="page2">
+        <br>
+        <ul class="ready_students">
+     </ul>
+    </div>
+    <script>
+        function remove(el){
+            var element = el;
+            element.remove();
+        }
+            const list_of_students = document.querySelector(".ready_students")
+        var students = JSON.parse(localStorage.getItem("students"));
+        if(students !== null){
+        for(i=0; i<students.length; i++){
+            var tag = document.createElement("li");
+            var text = document.createTextNode(students[i]);
+            tag.appendChild(text);
+            var element = document.querySelector(".ready_students");
+            element.appendChild(tag);
+            tag.setAttribute("class", i);
+        }
+    }
+    setInterval(function(){        
+    location.reload();
+    },5000);
+    document.querySelector('.ready_students').addEventListener('click', function(e) {if (e.target.tagName === 'LI') {
+        e.target.style.visibility = "hidden";
+        var students1 = JSON.parse(localStorage.getItem("students"));
+        students1.splice(students.indexOf($(e.target).text()), 1);
+        localStorage.setItem("students", JSON.stringify(students1));
+        var ketganlar = JSON.parse(localStorage.getItem("ketgan"));
+        ketganlar.push($(e.target).text());
+        localStorage.setItem("ketgan", JSON.stringify(ketganlar));
+
+    }});
+        
+    </script>
+    
+</body>
+</html>

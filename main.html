@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>NamanganPM</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="icon" href="favicon.ico">
+    <script src="jquery-3.4.1.js"></script>
+  </head>
+  <body>
+
+    <h1>Assalomu Alaykum!</h1>
+    <h4>Kimni olib ketgani keldingiz?</h4>
+    <div class="wrapper">
+      <div class="select-btn">
+        <span>O'quvchini tanlang...</span>
+        <i class="uil uil-angle-down"></i>
+      </div>
+      <div class="content">
+        <div class="search">
+          <i class="uil uil-search"></i>
+          <input spellcheck="false" type="text" placeholder="Qidirish...">
+        </div>
+        <ul class="options"></ul>
+      </div>
+    </div>
+    <h4>Iltimos, o'zingizni tanishtirsangiz!</h4>
+    <div class="relash">
+      <input type="radio" name="select" id="option-1" value="Ota-ona" checked>
+      <input type="radio" name="select" id="option-2" value="Vasiy">
+      <label for="option-1" class="option option-1">
+        <div class="dot"></div>
+        <span>Ota-Ona</span>
+      </label>
+      <label for="option-2" class="option option-2">
+        <div class="dot"></div>
+        <span>Vasiy</span>
+      </label>
+    </div>
+  <button class="button-77" role="button" type="submit" name="selected">Jo'natish</a></button>
+      <div class="alert hide">
+         <span class="fa fa-check-circle"></span>
+         <span class="msg">Sizning so'rovingiz muvaffaqiyatli jo'natildi!</span>
+         <div class="close-btn">
+            <span class="fas fa-times"></span>
+         </div>
+      </div>
+
+      <script>
+
+localStorage.setItem("students", '[]')
+        const ready = document.querySelector(".ready_students");
+console.log(ready);
+const wrapper = document.querySelector(".wrapper"),
+selectBtn = wrapper.querySelector(".select-btn"),
+searchInp = wrapper.querySelector("input"),
+options = wrapper.querySelector(".options");
+console.log(wrapper)
+if(localStorage.getItem("ketgan") === null || localStorage.getItem("ketgan").length === 0){
+            localStorage.setItem("ketgan", '[]')}
+localStorage.setItem("ketgan", '[]');
+if(localStorage.getItem("countries") === null || localStorage.getItem("countries").length === 0){
+            localStorage.setItem("countries", '[]')}
+let countries = ["Asqaraliyev Muhammadali 8-blue", "Nosirjonov Fayozbek 8-blue", "Ahmedov Muhammad 8-blue", "Avazxonov Jobirxon 8-blue", "Mahkamaliyev Javohir 8-blue", 
+"Ikromova Marjona 8-blue", "Ubaydullayev Farruh 8-blue", "Olimov Muhammadmirzo 8-blue", "Hudoyberdiyeva Gulshoda 8-blue", "Juramirzayev Muhammadnozim 8-blue", 
+"Abdurahmonova Go'zal 8-blue", "Rahbaraliyev Amirxon 8-blue", "Abdumajidova Olima 8-green", "Abdurahimov Nozimjon 8-green", "Abdusamiyev Odiljon 8-green", 
+"Asadullayev Asadbek 8-green", "Dadaxanov Muhiddin 8-green", "Ikromjonova Madina 8-green", "Lutfullaxonov Abrorxon 8-green", 
+"Rahmatullayev Ulug'bek 8-green", "Rustamjonova Hosiyatoy 8-green", "Samijonov Abrorjon 8-green", "Tuxtanazarova Navbahor 8-green", "Halilbekov Abrorbek 8-green",
+"Abduxoliqov Behruzbek 9-blue", "Aliyev Shahzodbek 9-blue", "Anvarov Ahmadjon 9-blue",
+"Husanov Orifxon 9-blue","Ibrohimov Azizbek 9-blue","Ismoilova Omina 9-blue","Mo'ydinova Nozila 9-blue",
+"Jo'raboyev Saidbek 9-blue","Rahimjonov Behruz 9-blue","Toxirov Mirzog'olib 9-blue","Umaraliyeva Sarvinoz 9-blue","Abdubannoyev Suhrob 9-green",
+"Abdubannoyeva Nigina 9-green","Abdusattorova Mahliyo 9-green","Haydaraliyev Bositxon 9-green","Hoshimova Mashhura 9-green",
+"Muhtorjonov Abdulhamid 9-green", "Nosiraliyev To'lqinjon 9-green", "Olimjonov Muhammaddiyor 9-green", "Sobirjonov Husniddin 9-green",
+ "Zayliddinova Kamola 9-green", "Zafarov A'zamjon 9-green", "Shokirova Laylo 9-green","Abduqahhorov Sherzod 10-blue", "Mamurxo'jayev Javohir 10-blue", 
+ "Turg'unpo'latov Donyor 10-blue", "Abdurahimov Dedaxon 10-blue", "Abdurahmonov Rahmonjon 10-blue", "Ahmadjonov Boburjon 10-blue", "Mansuraliyev Husanboy 10-blue",
+"Anvarova Rayhona 10-blue", "Davlataliyeva Odina 10-blue", "Mamathanova Ziyoda 10-blue", "Habibullayeva Sarvinoz 10-blue", "Abdurahmonov Botirxon 10-green", 
+"Komiljonov Bobomurod 10-green", "Olimjonov Jasur 10-green", "Nurmamatov Javohir 10-green", "Ko'kiboyev Shohjahon 10-green",
+"Solijonov Afzalshoh 10-green", "Saydullayev Sobitxon 10-green", "Rustamova Mohina 10-green", "Mirzamahmudova Iroda 10-green", "Muhammedova Rahbaroy 10-green",
+"Tursunboyeva Muxlisa 10-green", "Homidova Gavharshodbegim 10-green"];
+
+for(i=0; i<countries.length; i++){
+  countries[i] = JSON.stringify(i+1)+"."+countries[i]
+}
+
+
+function addCountry(selectedCountry) {
+options.innerHTML = "";
+countries.forEach(country => {
+ let isSelected = country == selectedCountry ? "selected" : "";
+ let items_index = countries.indexOf(country)
+ let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
+ options.insertAdjacentHTML("beforeend", li);
+});
+} 
+addCountry();
+
+var students = []
+
+function updateName(selectedLi) {
+searchInp.value = "";
+addCountry(selectedLi.innerText);
+wrapper.classList.remove("active");
+selectBtn.firstElementChild.innerText = selectedLi.innerText;
+}
+
+searchInp.addEventListener("keyup", () => {
+let arr = [];
+let searchWord = searchInp.value.toLowerCase();
+arr = countries.filter(data => {
+ return data.toLowerCase().includes(searchWord);
+}).map(data => {
+ let isSelected = data == selectBtn.firstElementChild.innerText ? "selected" : "";
+ return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
+}).join("");
+options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Kechirasiz, bunday o'quvchi topilmadi...</p>`;
+});
+
+
+selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+$('.button-77').click(function(){
+    if(selectBtn.firstElementChild.innerText !== "O'quvchini tanlang..."){
+      function validateRadios() {
+        var radios = document.getElementsByName("select")
+        for(var i = 0; i<radios.length; i++){
+          if(radios[i].checked){
+            var radio_checked = radios[i];
+            console.log(radio_checked.value);
+            
+    students.push(selectBtn.firstElementChild.innerText +": "+ radio_checked.value);
+    var old_data = JSON.parse(localStorage.getItem("students"));
+    if(old_data === null){
+      localStorage.setItem("students", "[]");
+      var old_data = JSON.parse(localStorage.getItem("students"));
+    }
+    else if(old_data !== null){old_data.push(selectBtn.firstElementChild.innerText +": "+ radio_checked.value);}
+    
+
+    localStorage.setItem("students", JSON.stringify(old_data));
+
+    countries.splice(countries.indexOf(selectBtn.firstElementChild.innerText), 1);
+    selectBtn.firstElementChild.innerText = "O'quvchini tanlang...";
+    addCountry();
+          }
+        }
+    }
+
+    
+    validateRadios();
+    console.log(countries);
+    console.log(students);
+    $('.alert').addClass("show");
+    $('.alert').removeClass("hide");
+    $('.alert').addClass("showAlert");
+    setTimeout(function(){
+      $('.alert').removeClass("show");
+      $('.alert').addClass("hide");
+    },1000);
+  }});
+  $('.close-btn').click(function(){
+    $('.alert').removeClass("show");
+    $('.alert').addClass("hide");
+  });
+      </script>
+  </body>
+</html>

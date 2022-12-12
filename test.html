@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="date"></div>
+    <script>
+        // while(true){
+// var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+// var d = new Date();
+// var day_of_the_week = d.getUTCDay();
+// var hours = d.getHours();
+// var minutes = d.getUTCMinutes();
+// if(day_of_the_week=="Friday" && hours==16 && minutes==00){
+
+//   //wait 1 minute
+// }
+// }
+var date = new Date(); //Gets current date
+
+var day = date.getUTCDay(); //Isolates what day it is
+
+date.setDate(date.getDate() - (day+1) % 7 ); 
+// day = 0 , (day+1) % 7 = 1
+// day = 1 , (day+1) % 7 = 2
+// .
+// .
+// day = 6 , (day+1) % 7 = 0 /here is sat
+
+
+document.getElementById("date").innerHTML = date;
+    </script>
+</body>
+</html>
